@@ -1,0 +1,1 @@
+# pokemons_redux_nextjs
