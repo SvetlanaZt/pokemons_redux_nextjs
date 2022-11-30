@@ -11,36 +11,42 @@ import { useGetByNumberQuery, useGetByTypeQuery } from '../store/pokeApi/pokeApi
 import { useSelector, useDispatch } from "react-redux";
 import { setNextPage, setPrevPage, setData } from '../components/features/userSlice';
 import { useLazyGetNextPageQuery } from '../store/pokeApi/pokeApi';
+import { useState } from "react";
 
 export default function Home() {
+  const [offset, setOffset] = useState(0);
+
   const dispatch = useDispatch();
-  const number = useSelector((state) => state.user.formControl)
-  const  dataPokemons  = useGetByNumberQuery(number);
+  const number = useSelector((state) => state.user.formControl);
+
+  const dataPokemons = useGetByNumberQuery({ number, offset });
+  console.log(number);
+  console.log(offset);
+
   console.log(dataPokemons?.data)
   dispatch(setData(dataPokemons?.data));
 
   const pokemon = useSelector((state) => state.user.data);
-  dispatch(setNextPage(pokemon?.next));
-  dispatch(setPrevPage(pokemon?.previous));
+  // dispatch(setNextPage(pokemon?.next));
+  // dispatch(setPrevPage(pokemon?.previous));
 
   const type = useSelector((state) => state.user.type);
   const dataType = useGetByTypeQuery(type);
 
   const name = useSelector((state) => state.user.filterName)
   const filterName = pokemon?.results?.filter(i => i.name.includes(name));
-  console.log(filterName)
+  // console.log(filterName)
 
 
-  const nextPage = useSelector((state) => state.user.nextPage);
-  const [fetchPokemons, { data }] = useLazyGetNextPageQuery();
+  // const nextPage = useSelector((state) => state.user.nextPage);
+  // const [fetchPokemons, { data }] = useLazyGetNextPageQuery();
   // console.log(data)
   
-   const onClickNext = async () => {
-     const response = await fetchPokemons(nextPage)
-     if ('data' in response) {
-       dispatch(setData(response?.data));
-      //  console.log(response?.data);
-     } 
+  const onClickNext = (evt) => {
+    return setOffset(prev => prev + number);
+    //  const response = await fetchPokemons(nextPage)
+    //    dispatch(setData(response?.data));
+    //    console.log(response?.data);
    };
   return (
     <div>

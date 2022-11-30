@@ -7,7 +7,7 @@ export const pokemonApi = createApi({
   // tagTypes: ['Post'],
   endpoints: builder => ({
     getByNumber: builder.query({
-      query: (limit) => `pokemon?limit=${limit}`,
+      query: ({ limit, offset }) => `pokemon?limit=${limit}&offset=${offset}`,
       transformResponse: responce => responce,
       // providesTags: ['Post'],
     }),

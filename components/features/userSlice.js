@@ -6,8 +6,8 @@ const initialState = {
     data: [],
     formControl: 10,
     type: '',
-    nextPage: '',
-    prevPage: ''
+    // nextPage: '',
+    // prevPage: ''
 }
 
 export const userSlice = createSlice({
