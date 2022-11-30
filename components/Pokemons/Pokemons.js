@@ -7,7 +7,7 @@ import {StyledUl, StyledLi, StyledImg, StyledName, StyledTypeStats} from './Poke
 export default function Pokemons({ pokemons }) {
     console.log(pokemons)
     const { data } = useGetByNameQuery(pokemons);
-    // console.log(data)
+    console.log(data)
     const dispatch = useDispatch();
     dispatch(setData(data));
 
