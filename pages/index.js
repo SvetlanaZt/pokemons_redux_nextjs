@@ -9,22 +9,39 @@ import FilterTypes from '../components/FilterTypes/FilterTypes';
 import Buttons from '../components/Buttons/Buttons'
 import { useGetByNumberQuery, useGetByTypeQuery } from '../store/pokeApi/pokeApi';
 import { useSelector, useDispatch } from "react-redux";
-import {setNextPage, setPrevPage} from '../components/features/userSlice'
+import { setNextPage, setPrevPage, setData } from '../components/features/userSlice';
+import { useLazyGetNextPageQuery } from '../store/pokeApi/pokeApi';
 
 export default function Home() {
   const dispatch = useDispatch();
   const number = useSelector((state) => state.user.formControl)
-  const { data } = useGetByNumberQuery(number);
+  const  dataPokemons  = useGetByNumberQuery(number);
+  console.log(dataPokemons?.data)
+  dispatch(setData(dataPokemons?.data));
 
-  dispatch(setNextPage(data?.next));
-  dispatch(setPrevPage(data?.previous));
-  
+  const pokemon = useSelector((state) => state.user.data);
+  dispatch(setNextPage(pokemon?.next));
+  dispatch(setPrevPage(pokemon?.previous));
+
   const type = useSelector((state) => state.user.type);
   const dataType = useGetByTypeQuery(type);
 
   const name = useSelector((state) => state.user.filterName)
-  const filterName = data?.results?.filter(i => i.name.includes(name))
+  const filterName = pokemon?.results?.filter(i => i.name.includes(name));
+  console.log(filterName)
 
+
+  const nextPage = useSelector((state) => state.user.nextPage);
+  const [fetchPokemons, { data }] = useLazyGetNextPageQuery();
+  // console.log(data)
+  
+   const onClickNext = async () => {
+     const response = await fetchPokemons(nextPage)
+     if ('data' in response) {
+       dispatch(setData(response?.data));
+      //  console.log(response?.data);
+     } 
+   };
   return (
     <div>
       <Heading text="Cписок пользователей"></Heading>
@@ -47,7 +64,7 @@ export default function Home() {
           </li>
         ))}
       </ul>
-    <Buttons/>
+      <Buttons onClick={ onClickNext } />
     </div>
   );
 }

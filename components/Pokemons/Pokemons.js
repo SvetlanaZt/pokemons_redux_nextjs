@@ -5,11 +5,11 @@ import { setData } from '../features/userSlice';
 import {StyledUl, StyledLi, StyledImg, StyledName, StyledTypeStats} from './Pokemons.styled'
 
 export default function Pokemons({ pokemons }) {
-    console.log(pokemons)
+    // console.log(pokemons)
     const { data } = useGetByNameQuery(pokemons);
-    console.log(data)
-    const dispatch = useDispatch();
-    dispatch(setData(data));
+    // console.log(data)
+    // const dispatch = useDispatch();
+    // dispatch(setData(data));
 
     return (<StyledUl>
         <StyledLi item={data?.types[0].type.name} key={data?.id}>
