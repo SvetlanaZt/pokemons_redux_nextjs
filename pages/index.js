@@ -1,34 +1,39 @@
-import Heading from "../components/Heading";
-import Header from "../components/Header";
+import HeaderImg from "../components/HeaderImg/HeaderImg";
 import Link from "next/link";
-import styles from "../styles/Home.module.css";
+import Head from '../components/Head'
 import FilterName from "../components/FilterName/FilterName";
 import Pokemons from '../components/Pokemons/Pokemons';
 import FormControl from '../components/FormControl/FormControl';
 import FilterTypes from '../components/FilterTypes/FilterTypes';
-import Buttons from '../components/Buttons/Buttons'
+import Buttons from '../components/Buttons/Buttons';
+import {StyledHeader, StyledDiv, StyledDivPokemons, StyledPagination} from './index.styled'
 import { useGetByNumberQuery, useGetByTypeQuery } from '../store/pokeApi/pokeApi';
 import { useSelector, useDispatch } from "react-redux";
-import { setNextPage, setPrevPage, setData } from '../components/features/userSlice';
-import { useLazyGetNextPageQuery } from '../store/pokeApi/pokeApi';
-import { useState } from "react";
+import { setData } from '../store/pokeApi/userSlice';
+import { useState, useEffect } from "react";
+import { Pagination } from 'antd';
 
 export default function Home() {
   const [offset, setOffset] = useState(0);
+  const [couter, setCouter] = useState(0);
+
+    const [current, setCurrent] = useState(3);
 
   const dispatch = useDispatch();
-  const number = useSelector((state) => state.user.formControl);
 
-  const dataPokemons = useGetByNumberQuery({ number, offset });
-  console.log(number);
-  console.log(offset);
+  const limit = useSelector((state) => state.user.formControl);
 
-  console.log(dataPokemons?.data)
+  const dataPokemons = useGetByNumberQuery({ limit, offset });
+  const countData = dataPokemons?.data?.count;
+  console.log(limit)
+
+  useEffect(() => {
+    setCouter(countData)
+  }, [countData]);
+    
   dispatch(setData(dataPokemons?.data));
 
   const pokemon = useSelector((state) => state.user.data);
-  // dispatch(setNextPage(pokemon?.next));
-  // dispatch(setPrevPage(pokemon?.previous));
 
   const type = useSelector((state) => state.user.type);
   const dataType = useGetByTypeQuery(type);
@@ -37,40 +42,36 @@ export default function Home() {
   const filterName = pokemon?.results?.filter(i => i.name.includes(name));
   // console.log(filterName)
 
-
-  // const nextPage = useSelector((state) => state.user.nextPage);
-  // const [fetchPokemons, { data }] = useLazyGetNextPageQuery();
-  // console.log(data)
-  
-  const onClickNext = (evt) => {
-    return setOffset(prev => prev + number);
-    //  const response = await fetchPokemons(nextPage)
-    //    dispatch(setData(response?.data));
-    //    console.log(response?.data);
+  const onChangePagination = (evt) => {
+   setOffset((evt - 1) * limit);
    };
+
   return (
-    <div>
-      <Heading text="Cписок пользователей"></Heading>
-      <Header />
-      <FilterName/>
-      <FormControl />
-      <FilterTypes/>
-      <ul>
+    <>
+      <Head />
+      
+      <StyledHeader>
+        <HeaderImg />
+        <FilterName/>
+      <StyledDiv>
+        <FormControl />
+        <FilterTypes />
+      </StyledDiv>
+    </StyledHeader>
+<main>
+      <StyledDivPokemons>
         {(dataType?.data?.pokemon) ? dataType?.data?.pokemon?.map((pokemon) => (
-          <li key={pokemon.name}>
             <Link key={pokemon.pokemon.name} href={`/pokemons/${pokemon.name}`}>
               <Pokemons key={pokemon.pokemon.name} pokemons = {pokemon.pokemon.name} />
             </Link>
-          </li>
         )) : filterName?.map((pokemon) => (
-          <li key={pokemon.name}>
             <Link key={pokemon.name} href={`/pokemons/${pokemon.name}`}>
               <Pokemons key={pokemon.name} pokemons = {pokemon.name} />
             </Link>
-          </li>
         ))}
-      </ul>
-      <Buttons onClick={ onClickNext } />
-    </div>
+      </StyledDivPokemons>
+        <StyledPagination onChange={onChangePagination} total={couter} pageSize={limit} />
+ </main>
+    </>
   );
 }

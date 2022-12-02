@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Select } from 'antd';
 
 export const StyledDiv = styled.div`
     margin-right: 40px;
@@ -16,19 +17,16 @@ export const StyledDiv = styled.div`
    margin-left: 30px;
     }
 `;
-export const StyledSelect = styled.select`
+export const StyledSelect = styled(Select)`
+    width: 150px;
     display: flex;
     margin: 0 auto;
     border-radius: 5px;
-    width: 50px;
+    width: 150px;
     height: 30px;
     @media screen and (min-width: 768px) {
-    width: 90px;
-    height: 50px;
-    font-size: 20px;
-    } @media screen and (min-width: 1200px) {
-   
-    }
+    width: 150px;
+    font-size: 20px;}
 `;
 export const StyledP = styled.p`
     justify-content: center;

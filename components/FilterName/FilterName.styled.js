@@ -1,6 +1,8 @@
 import styled from 'styled-components';
+import { Input } from 'antd';
 
-export const StyledInput = styled.input`
+export const StyledInput = styled(Input)`
+  width: 250px;
   display: flex;
   margin: 0 auto;
   padding: 0.375rem 0.75rem;

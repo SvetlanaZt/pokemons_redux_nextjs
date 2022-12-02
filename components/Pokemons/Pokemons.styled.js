@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Select, Option } from 'antd';
 
 export const StyledUl = styled.ul`
     list-style: none;
@@ -12,8 +13,11 @@ export const StyledUl = styled.ul`
     margin-top: 20px;
   }
 `;
-export const StyledLi = styled.li`
+export const StyledDiv = styled.div`
     margin-bottom: 40px;
+    @media (min-width: 768px) {
+    margin-right: 20px;
+    }
     background: ${(item) => {
     if (item.item === 'grass') {
         return '#85f785';
@@ -27,25 +31,6 @@ export const StyledLi = styled.li`
         return '#ffffde';
     } return '#ffff9f';
 }};
-   @media screen and (min-width: 768px) {
-    width: calc((100% - 2 * 30px) / 2);
-    margin-right: 30px;
-    :hover {
-  -webkit-transform: scale(1.1);
-  -ms-transform: scale(1.1);
-  transform: scale(1.1);
-  transition: transform 300ms
-}
-    :nth-child(2n) {
-    margin-right: 0;
-}};
- @media screen and (min-width: 1200px) {
-    width: calc((100% - 100px) / 3);
-    :nth-child(2n) {
-  margin-right: 30px;}
-  :nth-child(3n) {
-  margin-right: 0;
-}}
 `;
 export const StyledImg = styled.img`
     width: 200px;
@@ -76,3 +61,23 @@ export const StyledTypeStats = styled.p`
     line-height: 1.6;
     text-align: center;
 `;
+
+// @media screen and (min-width: 768px) {
+//     width: calc((100% - 2 * 30px) / 2);
+//     margin-right: 30px;
+//     :hover {
+//   -webkit-transform: scale(1.1);
+//   -ms-transform: scale(1.1);
+//   transform: scale(1.1);
+//   transition: transform 300ms
+// }
+//     :nth-child(2n) {
+//     margin-right: 0;
+// }};
+//  @media screen and (min-width: 1200px) {
+//     width: calc((100% - 100px) / 3);
+//     :nth-child(2n) {
+//   margin-right: 30px;}
+//   :nth-child(3n) {
+//   margin-right: 0;
+// }}
