@@ -5,19 +5,15 @@ import FilterName from "../components/FilterName/FilterName";
 import Pokemons from '../components/Pokemons/Pokemons';
 import FormControl from '../components/FormControl/FormControl';
 import FilterTypes from '../components/FilterTypes/FilterTypes';
-import Buttons from '../components/Buttons/Buttons';
 import {StyledHeader, StyledDiv, StyledDivPokemons, StyledPagination} from './index.styled'
 import { useGetByNumberQuery, useGetByTypeQuery } from '../store/pokeApi/pokeApi';
 import { useSelector, useDispatch } from "react-redux";
 import { setData } from '../store/pokeApi/userSlice';
 import { useState, useEffect } from "react";
-import { Pagination } from 'antd';
 
 export default function Home() {
   const [offset, setOffset] = useState(0);
-  const [couter, setCouter] = useState(0);
-
-    const [current, setCurrent] = useState(3);
+  // const [couter, setCouter] = useState(0);
 
   const dispatch = useDispatch();
 
@@ -25,22 +21,21 @@ export default function Home() {
 
   const dataPokemons = useGetByNumberQuery({ limit, offset });
   const countData = dataPokemons?.data?.count;
-  console.log(limit)
+
+  const data = dataPokemons?.data;
 
   useEffect(() => {
-    setCouter(countData)
-  }, [countData]);
-    
-  dispatch(setData(dataPokemons?.data));
+    dispatch(setData(data));
+  }, [data, dispatch]);
 
   const pokemon = useSelector((state) => state.user.data);
 
   const type = useSelector((state) => state.user.type);
   const dataType = useGetByTypeQuery(type);
+  // console.log(dataType?.data?.pokemon)
 
   const name = useSelector((state) => state.user.filterName)
   const filterName = pokemon?.results?.filter(i => i.name.includes(name));
-  // console.log(filterName)
 
   const onChangePagination = (evt) => {
    setOffset((evt - 1) * limit);
@@ -70,7 +65,7 @@ export default function Home() {
             </Link>
         ))}
       </StyledDivPokemons>
-        <StyledPagination onChange={onChangePagination} total={couter} pageSize={limit} />
+        <StyledPagination onChange={onChangePagination} total={countData} pageSize={limit} />
  </main>
     </>
   );

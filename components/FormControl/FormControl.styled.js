@@ -9,7 +9,7 @@ export const StyledDiv = styled.div`
     margin: 0 auto;
     width: 100px;
     @media screen and (min-width: 768px) {
-    width: 120px;
+    width: 150px;
     }
     @media screen and (min-width: 1200px) {
    margin: 0;

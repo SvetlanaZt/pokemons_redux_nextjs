@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Select, Option } from 'antd';
 
 export const StyledUl = styled.ul`
     list-style: none;
@@ -17,20 +16,8 @@ export const StyledDiv = styled.div`
     margin-bottom: 40px;
     @media (min-width: 768px) {
     margin-right: 20px;
+    height: 340px;
     }
-    background: ${(item) => {
-    if (item.item === 'grass') {
-        return '#85f785';
-    } else if (item.item === 'water') {
-        return '#9696e9';
-    } else if (item.item === 'fire') {
-        return '#fb8a8a';
-    } else if (item.item === 'bug') {
-        return '#dab8be';
-    } else if (item.item === 'normal') {
-        return '#ffffde';
-    } return '#ffff9f';
-}};
 `;
 export const StyledImg = styled.img`
     width: 200px;
@@ -60,6 +47,30 @@ export const StyledTypeStats = styled.p`
     font-size: 16px;
     line-height: 1.6;
     text-align: center;
+    background-color: ${(item) => {
+    if (item.item === 'grass') {
+        return '#85f785';
+    } else if (item.item === 'water') {
+        return '#9696e9';
+    } else if (item.item === 'fire') {
+        return '#fb8a8a';
+    } else if (item.item === 'bug') {
+        return '#dab8be';
+    } else if (item.item === 'normal') {
+        return '#ffffde';
+    } else if (item.item === 'poison') {
+        return '#fcfca4';
+    } else if (item.item === 'flying') {
+        return '#c0c0e6';
+    } else if (item.item === 'ground') {
+        return '#631e1185';
+    } else if (item.item === 'electric') {
+        return '#f9f91a';
+    } else if (item.item === 'fairy') {
+        return '#f40f0f';
+        
+    } return '#f3f3e0;';
+}};
 `;
 
 // @media screen and (min-width: 768px) {

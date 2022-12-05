@@ -1,13 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
 const initialState = {
     firstName: '',
     filterName: '',
     data: [],
     formControl: 10,
-    type: '',
-    // nextPage: '',
-    // prevPage: ''
+    type: ''
 }
 
 export const userSlice = createSlice({
@@ -37,6 +37,13 @@ export const userSlice = createSlice({
         }
     }
 })
+
+const persistConfig = {
+  key: 'root',
+  storage,
+}
+
+export const rootReducer = persistReducer(persistConfig, userSlice.reducer)
 
 export const { setFirstName,  setFilterName, setData, setFormControl, setType, setNextPage, setPrevPage} = userSlice.actions
 export default userSlice.reducer
