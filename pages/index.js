@@ -37,9 +37,12 @@ export default function Home() {
   const filterName = pokemon?.results?.filter(i => i.name.includes(name));
 
   const onChangePagination = (evt) => {
+    console.log(evt)
    setOffset((evt - 1) * limit);
-   };
-
+  };
+  //  const limitPagination = (evt) => {
+  //  console.log(evt)
+  //  };
   return (
     <>
       <Head />
@@ -64,7 +67,7 @@ export default function Home() {
             </StyledLink>
         ))}
       </StyledDivPokemons>
-        <StyledPagination onChange={onChangePagination} total={countData} pageSize={limit} />
+        <StyledPagination onChange={onChangePagination} total={countData} pageSize={limit} showSizeChanger={false}/>
  </main>
     </>
   );
