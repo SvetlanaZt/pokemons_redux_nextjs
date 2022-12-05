@@ -1,11 +1,10 @@
 import HeaderImg from "../components/HeaderImg/HeaderImg";
-import Link from "next/link";
 import Head from '../components/Head'
 import FilterName from "../components/FilterName/FilterName";
 import Pokemons from '../components/Pokemons/Pokemons';
 import FormControl from '../components/FormControl/FormControl';
 import FilterTypes from '../components/FilterTypes/FilterTypes';
-import {StyledHeader, StyledDiv, StyledDivPokemons, StyledPagination} from './index.styled'
+import {StyledHeader, StyledDiv, StyledDivPokemons, StyledPagination, StyledLink} from './index.styled'
 import { useGetByNumberQuery, useGetByTypeQuery } from '../store/pokeApi/pokeApi';
 import { useSelector, useDispatch } from "react-redux";
 import { setData } from '../store/pokeApi/userSlice';
@@ -56,13 +55,13 @@ export default function Home() {
 <main>
       <StyledDivPokemons>
         {(dataType?.data?.pokemon) ? dataType?.data?.pokemon?.map((pokemon) => (
-            <Link key={pokemon.pokemon.name} href={`/pokemons/${pokemon.name}`}>
+            <StyledLink key={pokemon.pokemon.name} href={`/pokemons/${pokemon.name}`}>
               <Pokemons key={pokemon.pokemon.name} pokemons = {pokemon.pokemon.name} />
-            </Link>
+            </StyledLink>
         )) : filterName?.map((pokemon) => (
-            <Link key={pokemon.name} href={`/pokemons/${pokemon.name}`}>
+            <StyledLink key={pokemon.name} href={`/pokemons/${pokemon.name}`}>
               <Pokemons key={pokemon.name} pokemons = {pokemon.name} />
-            </Link>
+            </StyledLink>
         ))}
       </StyledDivPokemons>
         <StyledPagination onChange={onChangePagination} total={countData} pageSize={limit} />

@@ -1,19 +1,20 @@
 import { useRouter } from "next/router";
 import { useGetByNameQuery } from '/store/pokeApi/pokeApi';
-import Image from 'next/image'
+import Image from 'next/image';
+import {StyledDiv, StyledImg, StyledName, StyledH2} from './[id].styled'
 
 export default function Pokemon() {
   const { query } = useRouter();
   const { data } = useGetByNameQuery(query.id);
  
   return (
-    <><h2>{data?.name}</h2>
-            <img
+    <StyledDiv><StyledH2>{data?.name}</StyledH2>
+            <StyledImg
                 src={data?.sprites.other.dream_world.front_default}
                 alt={data?.name}
                 width={200}
                 height={200}
-            ></img>
-            <p>Type: {data?.types[0].type.name}</p>
-            <p>Stats: {data?.stats[0].base_stat}</p></>);;
+            ></StyledImg>
+            <StyledName>Type: {data?.types[0].type.name}</StyledName>
+            <StyledName>Stats: {data?.stats[0].base_stat}</StyledName></StyledDiv>);;
 }
