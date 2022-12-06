@@ -32,7 +32,7 @@ export const StyledImg = styled(Image)`
     display: flex;
     @media screen and (min-width: 768px) {
     margin: 0;
-    height: 90px;
+    // height: 90px;
     margin-left: 20px
 }
 `;
