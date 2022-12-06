@@ -1,7 +1,6 @@
 import { useRouter } from "next/router";
 import { useGetByNameQuery } from '/store/pokeApi/pokeApi';
-import Image from 'next/image';
-import {StyledDiv, StyledImg, StyledName, StyledH2} from './[id].styled'
+import { StyledDiv, StyledImg, StyledName, StyledH2 } from '../../styles/[id].styled';
 
 export default function Pokemon() {
   const { query } = useRouter();

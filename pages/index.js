@@ -4,7 +4,7 @@ import FilterName from "../components/FilterName/FilterName";
 import Pokemons from '../components/Pokemons/Pokemons';
 import FormControl from '../components/FormControl/FormControl';
 import FilterTypes from '../components/FilterTypes/FilterTypes';
-import {StyledHeader, StyledDiv, StyledDivPokemons, StyledPagination, StyledLink} from './index.styled'
+import {StyledHeader, StyledDiv, StyledDivPokemons, StyledPagination, StyledLink} from '../styles/index.styled'
 import { useGetByNumberQuery, useGetByTypeQuery } from '../store/pokeApi/pokeApi';
 import { useSelector, useDispatch } from "react-redux";
 import { setData } from '../store/pokeApi/userSlice';

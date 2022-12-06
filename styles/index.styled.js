@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Pagination } from 'antd';
-import Link from "next/link";
+import  Link  from "next/link";
 
 export const StyledDiv = styled.div`
     display: flex;

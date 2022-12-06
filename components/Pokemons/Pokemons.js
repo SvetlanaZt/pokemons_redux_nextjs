@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { useGetByNameQuery } from '../../store/pokeApi/pokeApi';
 import { StyledDiv, StyledImg, StyledName, StyledTypeStats } from './Pokemons.styled';
 

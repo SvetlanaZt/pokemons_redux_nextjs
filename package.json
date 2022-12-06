@@ -2,7 +2,6 @@
   "name": "pokemons_redux_nextjs",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://SvetlanaZt.github.io/pokemons_redux_nextjs/",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
