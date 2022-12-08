@@ -1,22 +1,16 @@
 import styled from 'styled-components';
 
-export const StyledUl = styled.ul`
-    list-style: none;
-    padding: 10px 15px;
-    margin: 0;
-    @media (min-width: 768px) {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding-top: 0;
-    margin-top: 20px;
-  }
-`;
 export const StyledDiv = styled.div`
     margin-bottom: 40px;
     @media (min-width: 768px) {
     margin-right: 20px;
     height: 340px;
+    :hover {
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+  transition: transform 300ms
+}
     }
 `;
 export const StyledImg = styled.img`

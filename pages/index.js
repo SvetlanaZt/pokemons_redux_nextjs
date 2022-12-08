@@ -9,10 +9,11 @@ import { useGetByNumberQuery, useGetByTypeQuery } from '../store/pokeApi/pokeApi
 import { useSelector, useDispatch } from "react-redux";
 import { setData } from '../store/pokeApi/userSlice';
 import { useState, useEffect } from "react";
+import { Spin } from 'antd';
 
 export default function Home() {
   const [offset, setOffset] = useState(0);
-  // const [couter, setCouter] = useState(0);
+  const [loading, setLoading] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -24,7 +25,9 @@ export default function Home() {
   const data = dataPokemons?.data;
 
   useEffect(() => {
+    setLoading(false)
     dispatch(setData(data));
+    setLoading(true)
   }, [data, dispatch]);
 
   const pokemon = useSelector((state) => state.user.data);
@@ -43,9 +46,12 @@ export default function Home() {
   //  const limitPagination = (evt) => {
   //  console.log(evt)
   //  };
+    if (!loading) {
+    return (<Spin size="large"/>)
+    }
   return (
     <>
-      <Head />
+      <Head/>
       
       <StyledHeader>
         <HeaderImg />
