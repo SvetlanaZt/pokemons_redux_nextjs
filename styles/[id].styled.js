@@ -3,11 +3,16 @@ import { Progress} from 'antd';
 
 export const StyledDivHome = styled.div`
   background-color: #c5cae9;
+   padding: 20px 20px;
+   justify-content: center;
   @media screen and (min-width: 768px) {
     display: flex;
+    height: 100vh;
   }
-    padding: 20px 20px;
-    justify-content: center;
+  @media screen and (min-width: 1200px) {
+   min-width: 1200px;
+   min-height: 100%;
+
 `;
 export const StyledH2 = styled.h2`
 font-family: 'Libre Baskerville';
@@ -61,7 +66,8 @@ export const StyledHText = styled.h3`
     line-height: 1.6;
     text-align: center;
     letter-spacing: 0.06em;
-    text-transform: uppercase
+    text-transform: uppercase;
+    margin:0;
 `;
 export const StyledPText = styled.p`
      font-family: Permanent Marker;
@@ -84,6 +90,7 @@ export const StyledUl = styled.ul`
   background-color: #e6e6f0;
   list-style: none;
   padding: 20px;
+  margin-bottom: 20px;
 `;
 export const StyledPLi = styled.li`
     display: flex;
@@ -125,4 +132,7 @@ export const StyledButton = styled.button`
 export const StyledTitleProgress = styled.p`
     width: 50px;
     margin-right: 25px;
+`;
+export const StyledDivDescription = styled.div`
+    box-sizing: border-box;
 `;

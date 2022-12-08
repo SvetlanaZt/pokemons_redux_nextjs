@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useGetByNameQuery, useGetBySpeciesQuery } from '/store/pokeApi/pokeApi';
-import { StyledDiv, StyledImg, StyledPLi, StyledH2, StyledDivWraper, StyledP, StyledUl, StyledProgress, StyledSpan,StyledDivHome, StyledTitleProgress, StyledHText,StyledPText, StyledDivEggs, StyledPEggs, StyledButton } from '../../styles/[id].styled';
+import { StyledDiv, StyledImg, StyledPLi, StyledH2, StyledDivWraper, StyledP, StyledUl, StyledDivDescription, StyledProgress, StyledSpan,StyledDivHome, StyledTitleProgress, StyledHText,StyledPText, StyledDivEggs, StyledPEggs, StyledButton } from '../../styles/[id].styled';
 import Router from 'next/router';
 
 
@@ -29,7 +29,7 @@ export default function Pokemon() {
            {data?.types.map(item =>
         <StyledP key={item.type.name}>Type: <StyledSpan><br/>{item.type.name}</StyledSpan></StyledP>)}
             </StyledDivWraper></StyledDiv>
-      <div>
+      <StyledDivDescription>
         <StyledHText>Description:</StyledHText>
         <StyledPText>{text}</StyledPText>
         <StyledHText>Stats:</StyledHText>
@@ -48,6 +48,6 @@ export default function Pokemon() {
           width={150}
           height={150}
         ></img>
-        </StyledDivEggs></div>
+        </StyledDivEggs></StyledDivDescription>
     </StyledDivHome>);;
 }
