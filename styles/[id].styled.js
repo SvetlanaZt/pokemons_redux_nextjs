@@ -8,7 +8,6 @@ export const StyledDivHome = styled.div`
   @media screen and (min-width: 768px) {
     display: flex;
     height: 100vh;
-    border: 1px solid #f00;
   }
   @media screen and (min-width: 1200px) {
    min-width: 1200px;
@@ -60,6 +59,16 @@ export const StyledP = styled.p`
 export const StyledSpan = styled.span`
     font-weight: 800;
 `;
+export const StyledHText = styled.h3`
+    font-family: Permanent Marker;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 1.6;
+    text-align: center;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin:0;
+`;
 export const StyledPText = styled.p`
      font-family: Permanent Marker;
     font-weight: 400;
@@ -97,7 +106,6 @@ export const StyledDivEggs = styled.div`
     display: flex;
     justify-content: space-around;
     align-items: center;
-     border: 1px solid #f00;
 `;
 export const StyledPEggs = styled.p`
     font-family: Permanent Marker;
@@ -127,5 +135,4 @@ export const StyledTitleProgress = styled.p`
 `;
 export const StyledDivDescription = styled.div`
     box-sizing: border-box;
-    border: 1px solid #f00;
 `;
