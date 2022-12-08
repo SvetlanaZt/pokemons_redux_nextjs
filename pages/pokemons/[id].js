@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useGetByNameQuery, useGetBySpeciesQuery } from '/store/pokeApi/pokeApi';
-import { StyledDiv, StyledImg, StyledPLi, StyledH2, StyledDivWraper, StyledP, StyledUl, StyledDivDescription, StyledProgress, StyledSpan,StyledDivHome, StyledTitleProgress, StyledHText,StyledPText, StyledDivEggs, StyledPEggs, StyledButton } from '../../styles/[id].styled';
+import { StyledDiv, StyledImg, StyledPLi, StyledH2, StyledDivWraper, StyledP, StyledUl, StyledDivDescription, StyledProgress, StyledSpan,StyledDivHome, StyledTitleProgress,StyledPText, StyledDivEggs, StyledPEggs, StyledButton } from '../../styles/[id].styled';
 import Router from 'next/router';
 
 
@@ -30,10 +30,11 @@ export default function Pokemon() {
         <StyledP key={item.type.name}>Type: <StyledSpan><br/>{item.type.name}</StyledSpan></StyledP>)}
             </StyledDivWraper></StyledDiv>
       <StyledDivDescription>
-        <StyledHText>Description:</StyledHText>
+        {/* <StyledHText>Description:</StyledHText> */}
         <StyledPText>{text}</StyledPText>
-        <StyledHText>Stats:</StyledHText>
-      <StyledUl>
+
+        <StyledUl>
+      <StyledHText>Stats:</StyledHText>
       {data?.stats.map(item =>
         <StyledPLi key={item.stat.name}>
           <StyledTitleProgress>{item.stat.name}</StyledTitleProgress>
