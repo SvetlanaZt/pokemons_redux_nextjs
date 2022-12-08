@@ -34,7 +34,6 @@ export default function Home() {
 
   const type = useSelector((state) => state.user.type);
   const dataType = useGetByTypeQuery(type);
-  // console.log(dataType?.data?.pokemon)
 
   const name = useSelector((state) => state.user.filterName)
   const filterName = pokemon?.results?.filter(i => i.name.includes(name));
@@ -43,9 +42,7 @@ export default function Home() {
     console.log(evt)
    setOffset((evt - 1) * limit);
   };
-  //  const limitPagination = (evt) => {
-  //  console.log(evt)
-  //  };
+ 
     if (!loading) {
     return (<Spin size="large"/>)
     }

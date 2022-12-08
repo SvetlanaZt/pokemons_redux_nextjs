@@ -3,9 +3,7 @@ import { StyledDiv, StyledImg, StyledName, StyledTypeStats } from './Pokemons.st
 
 export default function Pokemons({ pokemons }) {
     const { data } = useGetByNameQuery(pokemons);
-    
-// console.log(data?.sprites?.other?.dream_world?.front_default)
-    
+  
     return (<>
         <StyledDiv key={data?.id}>
             <StyledName>{data?.name}</StyledName>

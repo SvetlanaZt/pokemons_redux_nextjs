@@ -13,7 +13,6 @@ export default function FilterTypes() {
         name="select"
         placeholder="Select a type"
         onChange={e => { dispatch(setType(e)) }}>
-   <Select.Option value="all">all</Select.Option>
    <Select.Option value="water">water</Select.Option>
    <Select.Option value="grass">grass</Select.Option>
    <Select.Option value="fire">fire</Select.Option>
