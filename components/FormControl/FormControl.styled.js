@@ -18,14 +18,13 @@ export const StyledDiv = styled.div`
     }
 `;
 export const StyledSelect = styled(Select)`
-    width: 150px;
+    width: 100%;
     display: flex;
     margin: 0 auto;
     border-radius: 5px;
-    width: 150px;
     height: 30px;
     @media screen and (min-width: 768px) {
-    width: 150px;
+    width: 100%;
     font-size: 20px;}
 `;
 export const StyledP = styled.p`

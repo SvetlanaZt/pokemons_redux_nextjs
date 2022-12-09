@@ -23,6 +23,7 @@ export default function Home() {
   const countData = dataPokemons?.data?.count;
 
   const data = dataPokemons?.data;
+  console.log(data)
 
   useEffect(() => {
     setLoading(false)
@@ -31,6 +32,7 @@ export default function Home() {
   }, [data, dispatch]);
 
   const pokemon = useSelector((state) => state.user.data);
+ 
 
   const type = useSelector((state) => state.user.type);
   const dataType = useGetByTypeQuery(type);

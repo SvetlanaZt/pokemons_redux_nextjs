@@ -17,11 +17,11 @@ export default function FilterTypes() {
    <Select.Option value="grass">grass</Select.Option>
    <Select.Option value="fire">fire</Select.Option>
    <Select.Option value="bug">bug</Select.Option>
-   <Select.Option value="poison">normal</Select.Option>
-   <Select.Option value="normal">poison</Select.Option>
-   <Select.Option value="normal">ground</Select.Option>
-   <Select.Option value="normal">electric</Select.Option>
-   <Select.Option value="normal">fairy</Select.Option>
+   <Select.Option value="normal">normal</Select.Option>
+   <Select.Option value="poison">poison</Select.Option>
+   <Select.Option value="ground">ground</Select.Option>
+   <Select.Option value="electric">electric</Select.Option>
+   <Select.Option value="fairy">fairy</Select.Option>
  </StyledSelect></StyledDiv>
   )
 }

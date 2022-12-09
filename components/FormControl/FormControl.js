@@ -14,7 +14,7 @@ export default function FormControl() {
         name="select"
         onChange={e => { dispatch(setFormControl(e)) }}
         placeholder="Select a namber">
-    <Select.Option value="10">10</Select.Option>
+        <Select.Option value="10">10</Select.Option>
     <Select.Option value="20">20</Select.Option>
     <Select.Option value="50">50</Select.Option>
       </StyledSelect>

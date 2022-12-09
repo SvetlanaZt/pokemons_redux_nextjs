@@ -1,5 +1,5 @@
 import { StyledH1, StyledDiv, StyledImg } from './HeaderImg.styled';
-import img from '../../public/1_Yx8UKPOkev3JmjFP1O3jow.png';
+import img from '../../public/pikachu.png';
 
 export default function HeaderImg () {
   return <StyledDiv>
